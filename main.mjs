@@ -1,5 +1,8 @@
-import {MenuItem, Menu, ActionItem} from "./menuClasses.mjs";
-import {AbstractMethodError, IncorrectInputError} from "./errors.mjs";
+import {MenuItem} from "./PresentationLayer/MenuItem.mjs";
+import {Menu} from "./PresentationLayer/Menu.mjs";
+import {ActionItem} from "./PresentationLayer/ActionItem.mjs";
+import {AbstractMethodError, IncorrectInputError} from "./Errors/errors.mjs";
+import readline from "readline-sync";
 
 function main() {
 
