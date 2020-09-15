@@ -14,12 +14,12 @@ function main() {
                 6. Показать неуспевающих
                 7. Выход
     */
-    const listOfStudents = glMenu.addMenuItem("Список студентов");
-    glMenu.addMenuItem("Добавить студента");
-    glMenu.addMenuItem("Редактировать студента");
-    glMenu.addMenuItem("Удалить студента");
-    glMenu.addMenuItem("Показать отличников");
-    glMenu.addMenuItem("Показать неуспевающих");
+    const glMenu__listOfStudents = glMenu.addMenuItem("Список студентов");
+    const glMenu__addStudents = glMenu.addMenuItem("Добавить студента");
+    const glMenu__editStudents = glMenu.addMenuItem("Редактировать студента");
+    const glMenu__deleteStudents = glMenu.addMenuItem("Удалить студента");
+    const glMenu__showExcellentStudents = glMenu.addMenuItem("Показать отличников");
+    const glMenu__showLaggingStudents = glMenu.addMenuItem("Показать неуспевающих");
 //______________________________Конец реализации главного меню______________________
 
 
