@@ -1,5 +1,7 @@
 //________Add&DelStudentsCommands:
 
+import EditContext from "./EditContext.mjs";
+
 export function AddStudentCommand () {
     /*
             class Student { 
@@ -64,34 +66,41 @@ export function DeselectStudentCommand() {
 //____________StudentsEditors.NamesEditors:
 
 export function EditFirstNameCommand() {
-    
+    let new_name = readline.question("Новое *первое имя: ");
+    EditContext.getInstance().student.first_name = new_name;
 }
 
 export function EditMiddleNameCommand() {
-    
+    let new_name = readline.question("Новое *среднее имя: ");
+    EditContext.getInstance().student.middle_name = new_name;
 }
 
 export function EditLastNameCommand() {
-    
+    let new_name = readline.question("Новое *последнее имя: ");
+    EditContext.getInstance().student.last_name = new_name;
 }
 
-export function EditGroupCommand() {
-    
+export function EditGroupCommand() {    
+    let new_group = readline.question("Новая группа: ");
+    EditContext.getInstance().student.group = new_group;    
 }
 
 
 //____________StudentsEditors.MarksEditors:
 
 export function AddMarkCommand() {
-    
+    let new_subject = readline.question("По какому предмету Вы хотите добавить оценку: ");
+    let new_mark = Number(readline.question("Оценка: "));//добавить ошибку на не integer;
+    EditContext.getInstance().student.marks.set(new_subject, new_mark);
 }
 
 export function EditMarkCommand() {
-    
+    let edit_subject = readline.question("По какому предмету Вы хотите изменить оценку: ");//переписать! под выбор номера из списка и вообще переписать короче 
+    let new_mark = Number(readline.question("Оценка: "));//добавить ошибку на не integer;
+    EditContext.getInstance().student.marks.set(edit_subject, new_mark); //может не переписать! Отладить, убедиться, что это работает!
 }
 
 export function DeleteMarkCommand() {
-    
+    let del_subject = readline.question("Какой предмет удалить: ");
+    EditContext.getInstance().student.marks.delete(del_subject);
 }
-
-
