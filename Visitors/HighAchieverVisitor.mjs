@@ -1,7 +1,7 @@
 import {StudentVisitor} from "./StudentVisitor.mjs"
 import {Student} from "./../DataLayer/Student.mjs"
 
-class DetailedPrintVisitor extends StudentVisitor {
+class HighAchieverVisitor extends StudentVisitor {
     constructor() {
         this.has_students = false;
     }

@@ -6,7 +6,7 @@ class StudentRegistry { //ОСТОРОЖНО! тут применён патте
             throw new SingletoneError("Attempt to create a Singletone Class object twice!");
         }
 
-        this.students = [];  //это норма для одиночки?
+        this.students = [];
     }
 
     static getInstance() {

@@ -12,7 +12,7 @@ class DetailedPrintVisitor extends StudentVisitor {
     
     visitStudent(num, student) {
         process.stdout.write(num + ". ");
-        student.printShort();
+        student.printLong();
         this.has_students = true;
     }
 
