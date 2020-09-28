@@ -33,7 +33,8 @@ export function AddStudentCommand () {
 }
 
 export function DeleteStudentCommand() {
-    //
+    //пишем здес:)
+    
 }
 
 
