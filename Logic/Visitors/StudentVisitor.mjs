@@ -1,4 +1,4 @@
-import {AbstractMethodError} from "../Errors/errors.mjs";
+import {AbstractMethodError} from "../../Errors/errors.mjs";
 
 //Интерфейс! Для прочих визиторов
 export default class StudentVisitor {

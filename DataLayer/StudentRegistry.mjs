@@ -1,4 +1,4 @@
-class StudentRegistry { //ОСТОРОЖНО! тут применён паттерн Одиночка
+export default class StudentRegistry { //ОСТОРОЖНО! тут применён паттерн Одиночка
     static instance = null;
 
     constructor() {

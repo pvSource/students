@@ -1,4 +1,4 @@
-import {StudentVisitor} from "./../Visitors/StudentVisitor.mjs";
+import StudentVisitor from "./../Logic/Visitors/StudentVisitor.mjs";
 
 
 export default class Student { 
@@ -42,6 +42,4 @@ export default class Student {
         }
         return false;
     }
-    }
-
 }

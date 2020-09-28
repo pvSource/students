@@ -1,6 +1,13 @@
 //________Add&DelStudentsCommands:
 
 import EditContext from "./../Context/EditContext.mjs";
+import StudentRegistry from "./../../DataLayer/StudentRegistry.mjs";
+
+import BriefPrintVisitor from "./../Visitors/BriefPrintVisitor.mjs";
+import DetailedPrintVisitor from "./../Visitors/DetailedPrintVisitor.mjs";
+import HighAchieverVisitor from "./../Visitors/HighAchieverVisitor.mjs";
+import LowAchieverVisitor from "./../Visitors/LowAchieverVisitor.mjs";
+
 
 export function AddStudentCommand () {
     /*
@@ -34,11 +41,11 @@ export function DeleteStudentCommand() {
 //________ShowStudentsCommands:
 
 export function ShowHighAchieverCommand() {
-    StudentRegistry.getInstance().visitStudents(new HighAchievedVisitor);
+    StudentRegistry.getInstance().visitStudents(new HighAchieverVisitor);
 }
 
 export function ShowLowAchieverCommand() {
-    StudentRegistry.getInstance().visitStudents(new LowAchievedVisitor);
+    StudentRegistry.getInstance().visitStudents(new LowAchieverVisitor);
 }
 
 export function ListStudentsCommand () {

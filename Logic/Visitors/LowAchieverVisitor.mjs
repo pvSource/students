@@ -1,8 +1,9 @@
-import {StudentVisitor} from "./StudentVisitor.mjs"
-import {Student} from "./../DataLayer/Student.mjs"
+import StudentVisitor from "./StudentVisitor.mjs"
+import Student from "./../../DataLayer/Student.mjs"
 
-class LowAchieverVisitor extends StudentVisitor {
+export default class LowAchieverVisitor extends StudentVisitor {
     constructor() {
+        super();
         this.has_students = false;
     }
 
