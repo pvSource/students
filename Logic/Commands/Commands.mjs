@@ -1,6 +1,6 @@
 //________Add&DelStudentsCommands:
 
-import EditContext from "./EditContext.mjs";
+import EditContext from "./../Context/EditContext.mjs";
 
 export function AddStudentCommand () {
     /*
@@ -14,7 +14,11 @@ export function AddStudentCommand () {
             }
     */
     let new_student = {};
-    new_student = "aaa";
+    new_student.last_name = readline.question("*Последнее имя: ");
+    new_student.first_name = readline.question("*Первое имя: ");
+    new_student.middle_name = readline.question("*Среднее имя: ");
+    new_student.group = readline.question("*Группа: ");
+    let client_wants_to_add_marks = readline.question("Добавить оценки ")//здесь остановился..................................................
     //дописать
 
     
