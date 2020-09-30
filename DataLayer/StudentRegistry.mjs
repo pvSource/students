@@ -1,3 +1,6 @@
+
+
+
 export default class StudentRegistry { //ОСТОРОЖНО! тут применён паттерн Одиночка
     static instance = null;
 
@@ -35,7 +38,7 @@ export default class StudentRegistry { //ОСТОРОЖНО! тут примен
     visitStudents(visitor) {
         visitor.startVisit();
         for(let i = 0; i < this.students.length; i++) {
-            visitor.visitStudents(i, this.students[i]);
+            visitor.visitStudent(i, this.students[i]);
         }
         visitor.finishVisit();
 

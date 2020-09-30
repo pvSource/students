@@ -10,7 +10,7 @@ export class Menu extends MenuItem {
         this.isSubmenu = false; 
     }
 
-    addMenuItem(title) { //позже исправить под place (в определенное место)
+    addSubmenuItem(title) { //позже исправить под place (в определенное место)
 
         let currentItem = new Menu(title);
 

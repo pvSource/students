@@ -2,12 +2,12 @@ import StudentVisitor from "./../Logic/Visitors/StudentVisitor.mjs";
 
 
 export default class Student { 
-    constructor(last_name, first_name, middle_name, group, marks) {
+    constructor(last_name, first_name, middle_name, group) {
         this.last_name = last_name;
         this.first_name = first_name;
         this.middle_name = middle_name;
         this.group = group;
-        this.marks = marks;
+        this.marks = new Map;
     }
 
     printShort() {

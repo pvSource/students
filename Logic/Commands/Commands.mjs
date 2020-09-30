@@ -1,7 +1,9 @@
 //________Add&DelStudentsCommands:
+import readline from "readline-sync";
 
 import EditContext from "./../Context/EditContext.mjs";
 import StudentRegistry from "./../../DataLayer/StudentRegistry.mjs";
+import Student from "./../../DataLayer/Student.mjs"
 
 import BriefPrintVisitor from "./../Visitors/BriefPrintVisitor.mjs";
 import DetailedPrintVisitor from "./../Visitors/DetailedPrintVisitor.mjs";
@@ -25,15 +27,15 @@ export function AddStudentCommand () {
     new_student.first_name = readline.question("*Первое имя: ");
     new_student.middle_name = readline.question("*Среднее имя: ");
     new_student.group = readline.question("*Группа: ");
-    let client_wants_to_add_marks = readline.question("Добавить оценки ")//здесь остановился..................................................
-    //дописать
+    // let client_wants_to_add_marks = readline.question("Добавить оценки ") // доработать в будущем
 
     
-    StudentRegistry.getInstance().addStudent(new_student);
+    StudentRegistry.getInstance().addStudent(new Student(new_student.last_name, new_student.first_name, new_student.middle_name, new_student.group));
 }
 
 export function DeleteStudentCommand() {
-    //пишем здес:)
+    StudentRegistry.getInstance().visitStudents(new BriefPrintVisitor);
+    let student_number = readline.question("Какого студента удалить?");
     
 }
 
@@ -59,8 +61,8 @@ export function ListStudentsCommand () {
 
 export function SelectStudentCommand() {
     StudentRegistry.getInstance().visitStudents(new BriefPrintVisitor);
-    let student = readline.question("Выберите номер студента:"); //подключить ридлайн
-    EditContext.getInstance().student = student; //связать контекст
+    let student_number = readline.question("Выберите номер студента:");
+    EditContext.getInstance().student = StudentRegistry.getInstance().students[student_number]; //связать контекст
 }
 
 export function ShowSelectedCommand() {
@@ -109,10 +111,10 @@ export function AddMarkCommand() {
 export function EditMarkCommand() {
     let edit_subject = readline.question("По какому предмету Вы хотите изменить оценку: ");//переписать! под выбор номера из списка и вообще переписать короче 
     let new_mark = Number(readline.question("Оценка: "));//добавить ошибку на не integer;
-    EditContext.getInstance().student.marks.set(edit_subject, new_mark); //может не переписать! Отладить, убедиться, что это работает!
+    EditContext.getInstance().marks.set(edit_subject, new_mark); //может не переписать! Отладить, убедиться, что это работает!
 }
 
 export function DeleteMarkCommand() {
     let del_subject = readline.question("Какой предмет удалить: ");
-    EditContext.getInstance().student.marks.delete(del_subject);
+    EditContext.getInstance().marks.delete(del_subject);
 }

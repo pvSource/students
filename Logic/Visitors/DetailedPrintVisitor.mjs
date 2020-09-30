@@ -13,7 +13,7 @@ export default class DetailedPrintVisitor extends StudentVisitor {
     
     visitStudent(num, student) {
         process.stdout.write(num + ". ");
-        student.printLong();
+        student.printLong(); //проблемы тут вроде
         this.has_students = true;
     }
 
