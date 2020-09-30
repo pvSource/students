@@ -11,3 +11,10 @@ export class IncorrectInputError extends Error {
         this.name = "IncorrectInputError";
     }
 }
+
+export class StudentMarkError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "StudentMarkError";
+    }
+}

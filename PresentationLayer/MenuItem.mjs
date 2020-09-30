@@ -1,3 +1,5 @@
+import * as Errors from "./../Errors/errors.mjs"
+
 export class MenuItem {
     constructor(title) {
         this.setTitle(title);
@@ -12,6 +14,6 @@ export class MenuItem {
     }
 
     run() {
-        throw new AbstractMethodError("Trying to call an abstract method run() in a MenuItem object"); //здесь создать такой класс нужно будет потом
+        throw new Errors.AbstractMethodError("Trying to call an abstract method run() in a MenuItem object");
     }
 }

@@ -10,6 +10,8 @@ import DetailedPrintVisitor from "./../Visitors/DetailedPrintVisitor.mjs";
 import HighAchieverVisitor from "./../Visitors/HighAchieverVisitor.mjs";
 import LowAchieverVisitor from "./../Visitors/LowAchieverVisitor.mjs";
 
+import * as Errors from "./../../Errors/errors.mjs"
+
 
 export function AddStudentCommand () {
     /*
@@ -70,7 +72,7 @@ export function ShowSelectedCommand() {
 }
 
 export function DeselectStudentCommand() {
-    delete EditContext.getInstance(); //разобраться во время отладки как лучше
+    EditContext.getInstance().student = null;
 }
 
 
@@ -104,14 +106,25 @@ export function EditGroupCommand() {
 
 export function AddMarkCommand() {
     let new_subject = readline.question("По какому предмету Вы хотите добавить оценку: ");
+    for (let current_subject of EditContext.getInstance().student.marks.keys()) {
+        if (current_subject == new_subject) {
+            throw new Errors.StudentMarkError("Attempt to add already existing subject"); //добавить в Error
+        }
+    }
     let new_mark = Number(readline.question("Оценка: "));//добавить ошибку на не integer;
     EditContext.getInstance().student.marks.set(new_subject, new_mark);
 }
 
 export function EditMarkCommand() {
     let edit_subject = readline.question("По какому предмету Вы хотите изменить оценку: ");//переписать! под выбор номера из списка и вообще переписать короче 
-    let new_mark = Number(readline.question("Оценка: "));//добавить ошибку на не integer;
-    EditContext.getInstance().marks.set(edit_subject, new_mark); //может не переписать! Отладить, убедиться, что это работает!
+    for (let current_subject of EditContext.getInstance().student.marks.keys()) {
+        if (current_subject == new_subject) {
+            let new_mark = Number(readline.question("Оценка: "));
+            EditContext.getInstance().marks.set(edit_subject, new_mark);
+            return;
+        }
+    }
+    throw new Errors.StudentMarkError("Attempt to edit mark on non-existing subject");
 }
 
 export function DeleteMarkCommand() {

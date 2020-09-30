@@ -6,7 +6,7 @@ import * as Commands from "./Logic/Commands/Commands.mjs"; //импорт ком
 
 
 
-import {AbstractMethodError, IncorrectInputError} from "./Errors/errors.mjs";
+import * as Errors from "./Errors/errors.mjs";
 
 import readline from "readline-sync";
 
