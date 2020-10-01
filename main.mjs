@@ -28,9 +28,10 @@ function main() {
     const list_of_student_action = main_menu.addActionItem(new ActionItem("Список студентов", Commands.ListStudentsCommand));
     const add_student_action = main_menu.addActionItem(new ActionItem("Добавить студента", Commands.AddStudentCommand));
     const edit_student_submenu = main_menu.addSubmenuItem("Редактировать студента"); //субменю!\
+        edit_student_submenu.setStartupCommand(Commands.SelectStudentCommand);
 
     //____[ниже смысловой отступ]___Реализация субменю "Редактировать студента"_____________________________ //ЗДЕСЬ ВСЁ СЛОЖНЕЕ ЧЕМ КАЖЕТСЯ. РАБОТА С ВЫБРАННЫМ СТУДЕНТОМ!
-        const __DELETE_ME__ = edit_student_submenu.addActionItem(new ActionItem("__ВЫБРАТЬ КОНТЕКСТ__УДАЛИТЬ(отладочное)!", Commands.SelectStudentCommand)); //отладочная строка(в последствии удалить!);
+        //const __DELETE_ME__ = edit_student_submenu.addActionItem(new ActionItem("__ВЫБРАТЬ КОНТЕКСТ__УДАЛИТЬ(отладочное)!", Commands.SelectStudentCommand)); //отладочная строка(в последствии удалить!);
         const edit_first_name_action = edit_student_submenu.addActionItem(new ActionItem("Редактировать *первое имя", Commands.EditFirstNameCommand)); 
         const edit_middle_name_action = edit_student_submenu.addActionItem(new ActionItem("Редактировать *второе имя", Commands.EditMiddleNameCommand)); 
         const edit_last_name_action = edit_student_submenu.addActionItem(new ActionItem("Редактировать *последнее имя", Commands.EditLastNameCommand)); 

@@ -44,11 +44,11 @@ export default class StudentRegistry { //ОСТОРОЖНО! тут примен
 
     }
 
-    static load() {
+    _load() {
 
     }
 
     save() {
-
+        //дописать здесь и в load c
     }
 }
