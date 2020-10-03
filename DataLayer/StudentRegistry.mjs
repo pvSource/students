@@ -1,5 +1,4 @@
-
-
+import fs from "fs";
 
 export default class StudentRegistry { //ОСТОРОЖНО! тут применён паттерн Одиночка
     static instance = null;
@@ -8,8 +7,8 @@ export default class StudentRegistry { //ОСТОРОЖНО! тут примен
         if (StudentRegistry.instance != null) {
             throw new SingletoneError("Attempt to create a Singletone Class object twice!");
         }
-
         this.students = [];
+        this._load();
     }
 
     static getInstance() {
@@ -45,7 +44,8 @@ export default class StudentRegistry { //ОСТОРОЖНО! тут примен
     }
 
     _load() {
-
+        //let stud_reg_data = fs.readFileSync("./../studRegData.json", "utf-8"); //ошибка здесь - разобраться
+        //this.students = JSON.parse(stud_reg_data);
     }
 
     save() {

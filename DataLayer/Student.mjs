@@ -11,11 +11,14 @@ export default class Student {
     }
 
     printShort() {
-        console.log(` Фамилия: ${this.last_name}\n Имя: ${this.first_name}\n Отчество: ${this.middle_name}\n Группа: ${this.group}`);
+        console.log(`\n Фамилия: ${this.last_name}\n Имя: ${this.first_name}\n Отчество: ${this.middle_name}\n Группа: ${this.group}`);
     }
 
     printSubjects() {
-        //дописать
+        for (let subj_mark of this.marks) {
+            console.log(` ${subj_mark[0]}: ${subj_mark[1]}`);         
+        }
+        console.log(`\n`);
     }
 
     printLong() {

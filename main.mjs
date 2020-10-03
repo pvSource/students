@@ -3,12 +3,10 @@ import {ActionItem} from "./PresentationLayer/ActionItem.mjs";
 
 import * as Commands from "./Logic/Commands/Commands.mjs"; //импорт комманд в обьект! example: Commands.AddStudentCommand !
 
-
-
-
 import * as Errors from "./Errors/errors.mjs";
 
 import readline from "readline-sync";
+import fs from "fs";
 
 function main() {
 
@@ -29,7 +27,8 @@ function main() {
     const add_student_action = main_menu.addActionItem(new ActionItem("Добавить студента", Commands.AddStudentCommand));
     const edit_student_submenu = main_menu.addSubmenuItem("Редактировать студента"); //субменю!\
         edit_student_submenu.setStartupCommand(Commands.SelectStudentCommand);
-
+        edit_student_submenu.setBeforeSelectCommand(Commands.ShowSelectedCommand);
+        edit_student_submenu.setTearDownCommand(Commands.DeselectStudentCommand);
     //____[ниже смысловой отступ]___Реализация субменю "Редактировать студента"_____________________________ //ЗДЕСЬ ВСЁ СЛОЖНЕЕ ЧЕМ КАЖЕТСЯ. РАБОТА С ВЫБРАННЫМ СТУДЕНТОМ!
         //const __DELETE_ME__ = edit_student_submenu.addActionItem(new ActionItem("__ВЫБРАТЬ КОНТЕКСТ__УДАЛИТЬ(отладочное)!", Commands.SelectStudentCommand)); //отладочная строка(в последствии удалить!);
         const edit_first_name_action = edit_student_submenu.addActionItem(new ActionItem("Редактировать *первое имя", Commands.EditFirstNameCommand)); 
@@ -46,7 +45,8 @@ function main() {
     const show_low_achiever_action = main_menu.addActionItem(new ActionItem("Показать неуспевающих", Commands.ShowLowAchieverCommand));   //ВЕДЕТСЯ ОТЛАДКА!!!!!!!!!!!!!!!!!!!!!!! РАСКОММЕНТИРОВАТЬ ПОЗЖЕ!
 //______________________________Конец реализации главного меню______________________
 
-
+    //let studRegData = fs.readFileSync("./studRegData.json", "utf-8");
+    //studRegData =
 
     main_menu.run();
 }
