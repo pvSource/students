@@ -29,8 +29,6 @@ export function AddStudentCommand () {
     new_student.first_name = readline.question("*Первое имя: ");
     new_student.middle_name = readline.question("*Среднее имя: ");
     new_student.group = readline.question("*Группа: ");
-    // let client_wants_to_add_marks = readline.question("Добавить оценки ") // доработать в будущем
-
     
     StudentRegistry.getInstance().addStudent(new Student(new_student.last_name, new_student.first_name, new_student.middle_name, new_student.group));
 }
@@ -113,6 +111,8 @@ export function AddMarkCommand() {
     }
     let new_mark = Number(readline.question("Оценка: "));//добавить ошибку на не integer;
     EditContext.getInstance().student.marks.set(new_subject, new_mark);
+    StudentRegistry.getInstance().save();
+    console.log(StudentRegistry.getInstance());
 }
 
 export function EditMarkCommand() {

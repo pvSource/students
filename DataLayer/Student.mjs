@@ -45,4 +45,10 @@ export default class Student {
         }
         return false;
     }
+
+    static fromObject(obj) {
+        let new_stud = new Student(obj.last_name, obj.first_name, obj.middle_name, obj.group);
+        new_stud.marks = new Map(Object.entries(obj.marks));
+        return new_stud;
+    }
 }

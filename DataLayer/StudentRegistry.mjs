@@ -1,5 +1,7 @@
 import fs from "fs";
 
+import Student from "./Student.mjs";
+
 export default class StudentRegistry { //ОСТОРОЖНО! тут применён паттерн Одиночка
     static instance = null;
 
@@ -19,15 +21,18 @@ export default class StudentRegistry { //ОСТОРОЖНО! тут примен
     }
 
     addStudent(student) { //ДОБАВИТЬ ВАРИАНТЫ ОШИБОК
-        this.students.push(student);        
+        this.students.push(student);
+        this.save();       
     }
 
     removeStudentByNumber(number) {
         this.students.splice(number, 1);
+        this.save();
     }
 
     removeStudentByObject(student) {
         this.students.splice(this.students.indexOf(student), 1);
+        this.save();
     }
 
     getStudentCount() {
@@ -44,11 +49,14 @@ export default class StudentRegistry { //ОСТОРОЖНО! тут примен
     }
 
     _load() {
-        //let stud_reg_data = fs.readFileSync("./../studRegData.json", "utf-8"); //ошибка здесь - разобраться
-        //this.students = JSON.parse(stud_reg_data);
+        try {
+            let stud_reg_data = fs.readFileSync("./studRegData.json", "utf-8");
+            this.students = JSON.parse(stud_reg_data).map(Student.fromObject);
+        } catch (err) {}
+        
     }
 
     save() {
-        //дописать здесь и в load c
+        fs.writeFileSync("./studRegData.json", JSON.stringify(this.students));
     }
 }
