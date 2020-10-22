@@ -1,6 +1,7 @@
 import {MenuItem} from "./MenuItem.mjs";
 import {ActionItem} from "./ActionItem.mjs";
 import readline from "readline-sync";
+import { language } from "../languages/language_choose.mjs";
 
 const empty_func = function() {};
 
@@ -70,9 +71,9 @@ export class Menu extends MenuItem {
             console.log(`   ${i}. ${this.list_of_menu_items[i].getTitle()}`); //пусть нумерация будет идти с нуля для начала, во избежание поиска трудноотлавливаемой ошибки
         }
         if (this.isSubmenu) {
-            console.log(`       ${i}. Назад\n         ${i+1}. Выход в главное меню`);
+            console.log(`       ${i}. ${language.go_back}\n         ${i+1}. ${language.go_back_into_main_menu}`);
         } else {
-            console.log(`         ${i}. Выход в главное меню`);
+            console.log(`         ${i}. ${language.go_back_into_main_menu}`);
         }
     }
 

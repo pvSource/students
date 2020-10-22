@@ -1,5 +1,6 @@
 import StudentVisitor from "./StudentVisitor.mjs"
 import Student from "./../../DataLayer/Student.mjs"
+import { language } from "./../../languages/language_choose.mjs";
 
 export default class HighAchieverVisitor extends StudentVisitor {
     constructor() {
@@ -21,7 +22,7 @@ export default class HighAchieverVisitor extends StudentVisitor {
 
     finishVisit() {
         if (!this.has_students) {
-            console.log("В базе данных нет студентов!");
+            console.log(language.DB_has_no_suitable_students);
         }
     }
 }

@@ -1,5 +1,6 @@
 import StudentVisitor from "./../Logic/Visitors/StudentVisitor.mjs";
 import Mark from "./Mark.mjs";
+import {language} from "./../languages/language_choose.mjs"
 
 export default class Student { 
     constructor(last_name, first_name, middle_name, group) {
@@ -11,7 +12,7 @@ export default class Student {
     }
 
     printShort() {
-        console.log(`\n Фамилия: ${this.last_name}\n Имя: ${this.first_name}\n Отчество: ${this.middle_name}\n Группа: ${this.group}`);
+        console.log(`\n ${language.last_name}: ${this.last_name}\n ${language.first_name}: ${this.first_name}\n ${language.middle_name}: ${this.middle_name}\n ${language.group}: ${this.group}`);
     }
 
     printSubjects() {

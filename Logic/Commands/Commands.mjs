@@ -39,7 +39,7 @@ export function AddStudentCommand () {
 
 export function DeleteStudentCommand() {
     StudentRegistry.getInstance().visitStudents(new BriefPrintVisitor);
-    let student_number = readline.question("Какого студента удалить?");
+    let student_number = readline.question(language.what_name_of_student_do_you_want_to_delete);
     //тут по всей видимости не дописано
 }
 
@@ -65,7 +65,7 @@ export function ListStudentsCommand () {
 
 export function SelectStudentCommand() {
     StudentRegistry.getInstance().visitStudents(new BriefPrintVisitor);
-    let student_number = readline.question("Выберите номер студента:");
+    let student_number = readline.question(language.choose_students_number);
     EditContext.getInstance().student = StudentRegistry.getInstance().students[student_number]; //связать контекст
 }
 
@@ -84,22 +84,22 @@ export function DeselectStudentCommand() {
 //____________StudentsEditors.NamesEditors:
 
 export function EditFirstNameCommand() {
-    let new_name = readline.question("Новое *первое имя: ");
+    let new_name = readline.question(language.new_name);
     EditContext.getInstance().student.first_name = new_name;
 }
 
 export function EditMiddleNameCommand() {
-    let new_name = readline.question("Новое *среднее имя: ");
+    let new_name = readline.question(language.new_middle_name);
     EditContext.getInstance().student.middle_name = new_name;
 }
 
 export function EditLastNameCommand() {
-    let new_name = readline.question("Новое *последнее имя: ");
+    let new_name = readline.question(language.new_last_name);
     EditContext.getInstance().student.last_name = new_name;
 }
 
 export function EditGroupCommand() {    
-    let new_group = readline.question("Новая группа: ");
+    let new_group = readline.question(language.new_group);
     EditContext.getInstance().student.group = new_group;    
 }
 
@@ -107,7 +107,7 @@ export function EditGroupCommand() {
 //____________StudentsEditors.MarksEditors:
 
 export function AddMarkCommand() {
-    let new_subject = readline.question("По какому предмету Вы хотите добавить оценку: ");
+    let new_subject = readline.question(language.add_subject_mark_question);
 
     if (EditContext.getInstance().student.marks.some(function(current_subject){
         current_subject.subject == new_subject;
@@ -121,14 +121,14 @@ export function AddMarkCommand() {
     //    }
     //}
 
-    let new_mark = Number(readline.question("Оценка: "));//добавить ошибку на не integer;
+    let new_mark = Number(readline.question(language.mark));//добавить ошибку на не integer;
     EditContext.getInstance().student.marks.push(new Mark(new_subject, new_mark));
     StudentRegistry.getInstance().save();
     // console.log(StudentRegistry.getInstance());
 }
 
 export function EditMarkCommand() { //здесь все корочен подредасчть не дописано
-    let edit_subject = readline.question("По какому предмету Вы хотите изменить оценку: ");//переписать! под выбор номера из списка и вообще переписать короче
+    let edit_subject = readline.question(language.edit_subject_mark_question);//переписать! под выбор номера из списка и вообще переписать короче
     
     if (EditContext.getInstance().student.marks.every(function(current_subject){
         current_subject.subject != edit_subject;
@@ -138,7 +138,7 @@ export function EditMarkCommand() { //здесь все корочен подр�
 
     for (let current_subject of EditContext.getInstance().student.marks.keys()) {
         if (current_subject == new_subject) {
-            let new_mark = Number(readline.question("Оценка: "));
+            let new_mark = Number(readline.question(language.mark));
             EditContext.getInstance().marks.set(edit_subject, new_mark);
             return;
         }
@@ -147,7 +147,7 @@ export function EditMarkCommand() { //здесь все корочен подр�
 }
 
 export function DeleteMarkCommand() {
-    let del_subject = readline.question("Какой предмет удалить: ");
+    let del_subject = readline.question(language.del_subject_mark_question);
     //
     //
     //
