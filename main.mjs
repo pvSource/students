@@ -1,5 +1,6 @@
 import {Menu} from "./PresentationLayer/Menu.mjs";
 import {ActionItem} from "./PresentationLayer/ActionItem.mjs";
+import {language, choose_language} from "./languages/language_choose.mjs"
 
 import * as Commands from "./Logic/Commands/Commands.mjs"; //импорт комманд в обьект! example: Commands.AddStudentCommand!
 
@@ -10,14 +11,6 @@ import fs from "fs";
 
 function main() {
 //______________________________Выбор языка и загрузка языкового модуля
-    const lang_choose = readline.question("Choose your language:\nВыберите язык:\n(eng/rus):");
-    let language = null;
-    if (lang_choose == "rus") {
-        language = JSON.parse(fs.readFileSync("./languages/rus.json", "utf-8"));
-    } else {
-        language = JSON.parse(fs.readFileSync("./languages/eng.json", "utf-8"));
-    }
-    export {language};
 
 
 
@@ -58,6 +51,7 @@ function main() {
 }
 
 try {
+    choose_language();
     main();
 }
 catch(err) {

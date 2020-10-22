@@ -13,7 +13,8 @@ import LowAchieverVisitor from "./../Visitors/LowAchieverVisitor.mjs";
 import * as Errors from "./../../Errors/errors.mjs"
 import Mark from "../../DataLayer/Mark.mjs";
 
-import language from "./../../main.mjs"
+
+import {language} from "./../../languages/language_choose.mjs"
 
 
 export function AddStudentCommand () {
