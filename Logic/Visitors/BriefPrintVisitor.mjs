@@ -1,7 +1,6 @@
 import StudentVisitor from "./StudentVisitor.mjs"
 import Student from "./../../DataLayer/Student.mjs"
 import { language } from "../../languages/language_choose.mjs";
-import { language } from "./../../languages/language_choose.mjs";
 
 export default class BriefPrintVisitor extends StudentVisitor {
     constructor() {
