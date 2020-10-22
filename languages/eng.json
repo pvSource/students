@@ -1,0 +1,35 @@
+{
+    "main_menu": "Main menu",
+    "list_of_student": "Students list",
+    "add_student": "Add student",
+    "edit_student": "Edit student",
+    "edit_first_name": "Edit name",
+    "edit_middle_name": "Edit soname",
+    "edit_last_name": "Edit patronymic",
+    "edit_group": "Edit group",
+    "add_mark": "Add new mark",
+    "edit_mark": "Edit mark",
+    "delete_mark": "Delete mark",
+    "show_high_achiever": "Show high achiever students",
+    "show_low_achiever": "Show unsuccessful students",
+
+    "first_name": "Name",
+    "new_first_name": "New name",
+    "middle_name": "Soname",
+    "new_middle_name": "New soname",
+    "last_name": "Patronymic",
+    "new_last_name": "New patromymic",
+    "group": "Group",
+    "new_group": "New group",
+    "what_name_of_student_do_you_want_to_delete": "What number of students do you want to delete",
+    "choose_students_number": "Choose students number",
+    "add_subject_mark_question": "What subject do you want to add a mark",
+    "edit_subject_mark_question": "What subject do you want to edit a mark",
+    "del_subject_mark_question": "What subject do you want to delete",
+
+    "DB_has_no_any_students": "Database has no any students",
+    "DB_has_no_suitable_students": "Database has no suitable students",
+
+    "go_back": "Return",
+    "go_back_into_main_menu": "Return into main menu"
+}

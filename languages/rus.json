@@ -1,0 +1,35 @@
+{
+    "main_menu": "Главное меню",
+    "list_of_student": "Список студентов",
+    "add_student": "Добавить студента",
+    "edit_student": "Редактировать студента",
+    "edit_first_name": "Редактировать имя",
+    "edit_middle_name": "Редактировать фамилию",
+    "edit_last_name": "Редактировать отчество",
+    "edit_group": "Редактировать группу",
+    "add_mark": "Добавить оценку",
+    "edit_mark": "Редавтировать оценку",
+    "delete_mark": "Удалить оценку",
+    "show_high_achiever": "Показать отличников",
+    "show_low_achiever": "Показать неупевающих",
+
+    "first_name": "Имя",
+    "new_first_name": "Новое имя",
+    "middle_name": "Фамилия",
+    "new_middle_name": "Новая фамилия",
+    "last_name": "Отчество",
+    "new_last_name": "Новое отчество",
+    "group": "Группа",
+    "new_group": "Новая группа",
+    "what_name_of_student_do_you_want_to_delete": "Какого студента удалить",
+    "choose_students_number": "Выберите номер студента",
+    "add_subject_mark_question": "По какому предмету вы хотите добавить оценку",
+    "edit_subject_mark_question": "По какому предмету вы хотите изменить оценку",
+    "del_subject_mark_question": "По какому предмету вы хотите удалить оценку",
+
+    "DB_has_no_any_students": "В базе данных нет студентов",
+    "DB_has_no_suitable_students": "В базе данных нет подходящих студентов",
+
+    "go_back": "Назад",
+    "go_back_into_main_menu": "Вернуться в главное меню"
+}

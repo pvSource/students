@@ -52,7 +52,7 @@ export default class StudentRegistry { //ОСТОРОЖНО! тут примен
         try {
             let stud_reg_data = fs.readFileSync("./studRegData.json", "utf-8");
             this.students = JSON.parse(stud_reg_data).map(Student.fromObject);
-        } catch (err) {}
+        } catch (err) {console.log(err)}
         
     }
 
