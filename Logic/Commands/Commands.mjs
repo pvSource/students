@@ -14,7 +14,7 @@ import * as Errors from "./../../Errors/errors.mjs"
 import Mark from "../../DataLayer/Mark.mjs";
 
 
-import {language} from "./../../languages/language_choose.mjs"
+import {language} from "./../../language_choose.mjs"
 
 
 export function AddStudentCommand () {
@@ -35,12 +35,14 @@ export function AddStudentCommand () {
     new_student.group = readline.question(language.group);
     
     StudentRegistry.getInstance().addStudent(new Student(new_student.last_name, new_student.first_name, new_student.middle_name, new_student.group));
+    StudentRegistry.getInstance().save();
 }
 
 export function DeleteStudentCommand() {
     StudentRegistry.getInstance().visitStudents(new BriefPrintVisitor);
-    let student_number = readline.question(language.what_name_of_student_do_you_want_to_delete);
-    //тут по всей видимости не дописано
+    let student_number = Number(readline.question(language.what_name_of_student_do_you_want_to_delete));
+    StudentRegistry.getInstance().students.splice(student_number, 1);
+    StudentRegistry.getInstance().save();
 }
 
 
@@ -86,21 +88,25 @@ export function DeselectStudentCommand() {
 export function EditFirstNameCommand() {
     let new_name = readline.question(language.new_name);
     EditContext.getInstance().student.first_name = new_name;
+    StudentRegistry.getInstance().save();
 }
 
 export function EditMiddleNameCommand() {
     let new_name = readline.question(language.new_middle_name);
     EditContext.getInstance().student.middle_name = new_name;
+    StudentRegistry.getInstance().save();
 }
 
 export function EditLastNameCommand() {
     let new_name = readline.question(language.new_last_name);
     EditContext.getInstance().student.last_name = new_name;
+    StudentRegistry.getInstance().save();
 }
 
 export function EditGroupCommand() {    
     let new_group = readline.question(language.new_group);
-    EditContext.getInstance().student.group = new_group;    
+    EditContext.getInstance().student.group = new_group;
+    StudentRegistry.getInstance().save();    
 }
 
 
@@ -115,27 +121,32 @@ export function AddMarkCommand() {
         throw new Errors.StudentMarkError("Attempt to add already existing subject");
     }
 
-    //for (let current_subject of EditContext.getInstance().student.marks.keys()) {
-    //    if (current_subject == new_subject) {
-    //        throw new Errors.StudentMarkError("Attempt to add already existing subject"); //добавить в Error
-    //    }
-    //}
-
     let new_mark = Number(readline.question(language.mark));//добавить ошибку на не integer;
     EditContext.getInstance().student.marks.push(new Mark(new_subject, new_mark));
     StudentRegistry.getInstance().save();
-    // console.log(StudentRegistry.getInstance());
 }
 
 export function EditMarkCommand() { //здесь все корочен подредасчть не дописано
-    let edit_subject = readline.question(language.edit_subject_mark_question);//переписать! под выбор номера из списка и вообще переписать короче
+    let edit_subject = readline.question(language.edit_subject_mark_question);
     
-    if (EditContext.getInstance().student.marks.every(function(current_subject){
-        current_subject.subject != edit_subject;
+    for (let i = 0; i < EditContext.getInstance().student.marks.length; i++) {
+        if (EditContext.getInstance().student.marks[i].subject == edit_subject) {
+            let new_mark = Number(readline.question(language.new_mark));
+            EditContext.getInstance().student.marks[i].mark = new_mark;
+            StudentRegistry.getInstance().save();
+            return;
+        }
+    }
+    throw new Errors.StudentMarkError("Attempt to edit mark on non-existing subject");
+
+
+    if (EditContext.getInstance().student.marks.some(function(current_subject){
+        current_subject.subject == edit_subject;
     })) {
-        throw new Errors.StudentMarkError("Attempt to edit mark on non-existing subject");
+        EditContext.getInstance().student.marks
     }
 
+    throw new Errors.StudentMarkError("Attempt to edit mark on non-existing subject");
     for (let current_subject of EditContext.getInstance().student.marks.keys()) {
         if (current_subject == new_subject) {
             let new_mark = Number(readline.question(language.mark));
@@ -148,12 +159,11 @@ export function EditMarkCommand() { //здесь все корочен подр�
 
 export function DeleteMarkCommand() {
     let del_subject = readline.question(language.del_subject_mark_question);
-    //
-    //
-    //
+
     for(let i = 0; i < EditContext.getInstance().marks.length; i++) {
         if(EditContext.getInstance().marks[i].subject == del_subject) {
             EditContext.getInstance().marks.splice(del_subject_number_in_marks, 1);
+            StudentRegistry.getInstance().save();
             return;
         }
     }

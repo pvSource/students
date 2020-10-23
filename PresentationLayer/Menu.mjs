@@ -1,7 +1,7 @@
 import {MenuItem} from "./MenuItem.mjs";
 import {ActionItem} from "./ActionItem.mjs";
 import readline from "readline-sync";
-import { language } from "../languages/language_choose.mjs";
+import { language } from "../language_choose.mjs";
 
 const empty_func = function() {};
 
@@ -56,10 +56,6 @@ export class Menu extends MenuItem {
                 this.tear_down_command();
                 return;
             }
-            if (current_step === this.list_of_menu_items.length + 1) {
-                console.log("Это заглушка пока что");
-                continue;
-            }
             this.list_of_menu_items[current_step].run();
         }
     }
@@ -68,18 +64,18 @@ export class Menu extends MenuItem {
         console.log(`\n\n---------------${this.getTitle()}---------------`);
         let i; //иницилизация вынесена из цикла, чтобы добавить Вверх и Выход за пределами цикла под номерами i, которые ещё не выведены
         for (i = 0; i < this.list_of_menu_items.length; i++) {
-            console.log(`   ${i}. ${this.list_of_menu_items[i].getTitle()}`); //пусть нумерация будет идти с нуля для начала, во избежание поиска трудноотлавливаемой ошибки
+            console.log(`   ${i+1}. ${this.list_of_menu_items[i].getTitle()}`); //пусть нумерация будет идти с нуля для начала, во избежание поиска трудноотлавливаемой ошибки
         }
         if (this.isSubmenu) {
-            console.log(`       ${i}. ${language.go_back}\n         ${i+1}. ${language.go_back_into_main_menu}`);
+            console.log(`       ${i+1}. ${language.go_back}`);
         } else {
-            console.log(`         ${i}. ${language.go_back_into_main_menu}`);
+            console.log(`         ${i+1}. ${language.go_back_into_main_menu}`);
         }
     }
 
     _getStepFromConsole() {
         while (true) {
-            let input_step = Number(readline.question("> "));
+            let input_step = Number(readline.question("> "))-1;
             if (this._isStepCorrect(input_step)) {
                 return(input_step);
             }
@@ -88,7 +84,7 @@ export class Menu extends MenuItem {
     }
 
     _isStepCorrect(input_step) {
-        return (Number.isInteger(input_step) && input_step >= 0 && input_step < this.list_of_menu_items.length+2);
-    }
+        return (Number.isInteger(input_step) && input_step >= 0 && input_step < this.list_of_menu_items.length+1);
+    }7
 
 }

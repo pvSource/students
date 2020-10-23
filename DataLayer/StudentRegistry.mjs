@@ -22,17 +22,14 @@ export default class StudentRegistry { //ОСТОРОЖНО! тут примен
 
     addStudent(student) { //ДОБАВИТЬ ВАРИАНТЫ ОШИБОК
         this.students.push(student);
-        this.save();       
     }
 
     removeStudentByNumber(number) {
         this.students.splice(number, 1);
-        this.save();
     }
 
     removeStudentByObject(student) {
         this.students.splice(this.students.indexOf(student), 1);
-        this.save();
     }
 
     getStudentCount() {
