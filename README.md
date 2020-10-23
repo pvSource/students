@@ -1,6 +1,5 @@
-<h1 align="center"> <font color="green">S</font>tudents </h1>
-
-![alt tag](https://i.ibb.co/59m37Xj/intro.png "Скриншот работы программы на русском и английском языке")​
+<h1 align="center"> Students </h1>
+<img src="https://i.ibb.co/59m37Xj/intro.png" alt="Скриншот работы программы на русском и английском языке" width=100%></img>
 
 ###  Программа для ведения журнала студентов группы и отслеживания их успеваемости.
 ---
