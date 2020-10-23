@@ -8,10 +8,11 @@
     "edit_last_name": "Редактировать отчество",
     "edit_group": "Редактировать группу",
     "add_mark": "Добавить оценку",
-    "edit_mark": "Редавтировать оценку",
+    "edit_mark": "Редактировать оценку",
     "delete_mark": "Удалить оценку",
     "show_high_achiever": "Показать отличников",
     "show_low_achiever": "Показать неупевающих",
+    "delete_student": "Удалить студента",
 
     "first_name": "Имя: ",
     "new_first_name": "Новое имя: ",

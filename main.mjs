@@ -10,7 +10,7 @@ import readline from "readline-sync";
 import fs from "fs";
 
 function main() {
-    
+
 //_____________________________Реализация главного меню_____________________________
     const main_menu = new Menu(language.main_menu);
     /*      Главное меню состоит из следующих пунктов:
@@ -39,7 +39,7 @@ function main() {
         const delete_mark_action = edit_student_submenu.addActionItem(new ActionItem(language.delete_mark, Commands.DeleteMarkCommand));
     //_____________________________Конец реализации субменю "Редактировать студента"_____________________________
 
-    const delete_student_submenu = main_menu.addActionItem(new ActionItem("Удалить студента", Commands.DeleteStudentCommand));     //что-о не совсем очевидное
+    const delete_student_submenu = main_menu.addActionItem(new ActionItem(language.delete_student, Commands.DeleteStudentCommand));     //что-о не совсем очевидное
     const show_high_achiever_action = main_menu.addActionItem(new ActionItem(language.show_high_achiever, Commands.ShowHighAchieverCommand));   //ВЕДЕТСЯ ОТЛАДКА!!!!!!!!!!!!!!!!!!!!!!! РАСКОММЕНТИРОВАТЬ ПОЗЖЕ!
     const show_low_achiever_action = main_menu.addActionItem(new ActionItem(language.show_low_achiever, Commands.ShowLowAchieverCommand));   //ВЕДЕТСЯ ОТЛАДКА!!!!!!!!!!!!!!!!!!!!!!! РАСКОММЕНТИРОВАТЬ ПОЗЖЕ!
 //______________________________Конец реализации главного меню______________________

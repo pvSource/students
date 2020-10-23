@@ -12,6 +12,7 @@
     "delete_mark": "Delete mark",
     "show_high_achiever": "Show high achiever students",
     "show_low_achiever": "Show unsuccessful students",
+    "delete_student": "Delete student",
 
     "first_name": "Name: ",
     "new_first_name": "New name: ",

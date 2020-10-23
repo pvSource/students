@@ -134,24 +134,7 @@ export function EditMarkCommand() { //здесь все корочен подр�
             let new_mark = Number(readline.question(language.new_mark));
             EditContext.getInstance().student.marks[i].mark = new_mark;
             StudentRegistry.getInstance().save();
-            return;
-        }
-    }
-    throw new Errors.StudentMarkError("Attempt to edit mark on non-existing subject");
-
-
-    if (EditContext.getInstance().student.marks.some(function(current_subject){
-        current_subject.subject == edit_subject;
-    })) {
-        EditContext.getInstance().student.marks
-    }
-
-    throw new Errors.StudentMarkError("Attempt to edit mark on non-existing subject");
-    for (let current_subject of EditContext.getInstance().student.marks.keys()) {
-        if (current_subject == new_subject) {
-            let new_mark = Number(readline.question(language.mark));
-            EditContext.getInstance().marks.set(edit_subject, new_mark);
-            return;
+            return;git 
         }
     }
     throw new Errors.StudentMarkError("Attempt to edit mark on non-existing subject");
@@ -160,9 +143,9 @@ export function EditMarkCommand() { //здесь все корочен подр�
 export function DeleteMarkCommand() {
     let del_subject = readline.question(language.del_subject_mark_question);
 
-    for(let i = 0; i < EditContext.getInstance().marks.length; i++) {
-        if(EditContext.getInstance().marks[i].subject == del_subject) {
-            EditContext.getInstance().marks.splice(del_subject_number_in_marks, 1);
+    for(let i = 0; i < EditContext.getInstance().student.marks.length; i++) {
+        if(EditContext.getInstance().student.marks[i].subject == del_subject) {
+            EditContext.getInstance().student.marks.splice(i, 1);
             StudentRegistry.getInstance().save();
             return;
         }
